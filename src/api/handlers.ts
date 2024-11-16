@@ -1,8 +1,12 @@
 import { http, HttpResponse } from "msw";
+import { BASE_URL } from "../consts";
 
 export const handlers = [
-  http.post("/login", async ({ request }) => {
-    const data = (await request.json()) as { email: string; password: string };
+  http.post(`${BASE_URL}/login`, async ({ request }) => {
+    const data = (await request.json()) as {
+      email: string;
+      password: string;
+    };
 
     const email = data?.email;
     const password = data?.password;
